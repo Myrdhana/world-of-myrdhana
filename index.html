@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Myrdhana</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui,sans-serif;
+  color:#e8e8ee;
+  background:
+    linear-gradient(rgba(10,12,20,0.85),rgba(10,12,20,0.85)),
+    url("images/capucine.jpg") center/cover fixed;
+}
+
+main{max-width:900px;margin:auto;padding:2rem;}
+
+h1{
+  font-size:2rem;
+  background:linear-gradient(90deg,#7dff9a,#4fd1c5,#7dff9a);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.tagline{
+  font-style:italic;
+  margin-bottom:2rem;
+  color:#7dff9a;
+}
+
+p{line-height:1.6;}
+
+.escape{
+  font-style:italic;
+  background:linear-gradient(90deg,#4fd1c5,#7dff9a);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.signature
+  {margin-top:1.5rem;
+   margin-bottom:5.5rem; /* augmente l’espace AVANT le titre */
+}
+.signature .name{
+  font-family:'Dancing Script',cursive;
+  font-size:1.6rem;
+}
+
+select{
+  margin-bottom:1.5rem;
+  background:rgba(0,0,0,0.6);
+  color:#e8e8ee;
+  border:1px solid rgba(125,255,154,0.4);
+  padding:0.4rem 0.6rem;
+  border-radius:6px;
+  font-size:0.9rem;
+}
+
+select option{
+  background:#0b0e18;
+  color:#e8e8ee;
+}
+
+.themes{
+  margin-top:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.05rem;
+}
+
+.theme a{
+  display:flex;
+  align-items:flex-end;
+  padding:0.05rem;
+  height:40px;
+  font-weight:600;
+  text-decoration:none;
+  color:white;
+  background-size:cover;
+  background-position:center;
+}
+
+.theme span{
+  display: inline-block;          /* clé n°1 */
+  max-width: fit-content;         /* clé n°2 */
+  width: auto;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  padding: 0.2rem 0.45rem;
+  color:#6ecbff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.25s ease;
+  border-radius: 6px;
+}
+
+.theme a:hover span{
+  color:#bfe9ff;
+  background: rgba(255,255,255,0.2);
+}
+
+footer{
+  margin-top:3rem;
+  font-size:0.85rem;
+  opacity:0.8;
+  text-align:center;
+}
+
+.help{
+  display: inline-block;          /* ← LA clé */
+  max-width: 100%;
+  width: fit-content;             /* épouse le texte */
+  margin:2.2rem 0 1.8rem 0;      /* ← plus de auto, donc aligné à gauche */
+  padding:0.8rem 1rem;
+  font-size:0.70rem;
+  font-style:italic;
+  line-height:1.55;
+  color:#4C4C73;
+  background:rgba(255,255,255,0.045);
+  border-radius:10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.themes-title{
+  margin-top:2.2rem;
+  margin-bottom:0.03rem;
+  font-size:1.5rem;
+  font-weight:600;
+  color:#3E93C2;
+}
+
+</style>
+</head>
+
+<body>
+<main>
+
+<select onchange="setLang(this.value)">
+  <option value="fr">Français</option>
+  <option value="en">English</option>
+  <option value="de">Deutsch</option>
+  <option value="lu">Lëtzebuergesch</option>
+</select>
+
+<h1 id="title"></h1>
+<p class="tagline" id="tagline"></p>
+
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p_extra"></p>
+<p class="escape" id="p3"></p>
+
+<p class="signature">
+  <span id="sign_text"></span><br>
+  <span class="name" id="sign_name"></span>
+</p>
+
+<div class="themes-title" id="themes_title"></div>
+
+<!-- LISTE DES THÈMES -->
+<div class="themes">
+  <div class="theme"><a href="theme.html?theme=sf"><span id="t_sf"></span></a></div>
+  <div class="theme"><a href="theme.html?theme=fantasy"><span id="t_fantasy"></span></a></div>
+  <div class="theme"><a href="theme.html?theme=apocalypse"><span id="t_apocalypse"></span></a></div>
+  <div class="theme"><a href="theme.html?theme=cats"><span id="t_cats"></span></a></div>
+  <div class="theme"><a href="theme.html?theme=misc"><span id="t_misc"></span></a></div>
+</div>
+
+<!-- TEXTE D’AIDE / EXPLICATION -->
+<div class="help" id="help"></div>
+</div>
+
+<footer>
+  <span id="footer"></span>
+</footer>
+
+</main>
+
+<script>
+const texts={
+fr:{
+ title:"L’imagination est la route vers un monde plus grand",
+ tagline:"L’imagination n’a pas de frontière",
+ p1:"Bienvenue sur mon site. Vous trouverez ici des images que j’ai créées (certaines avec l’aide de ChatGPT) et que je souhaite partager avec vous. Vous pouvez les télécharger librement.",
+ p2:"Je m’inspire de textes de musiques, de livres, de mes rêves et de mon amour pour les chats.",
+ p_extra:"J’espère que vous aimerez ces images autant que j’aime les créer.",
+ p3:"Quand la réalité devient trop dure, l’imagination permet de s’évader.",
+ sign_text:"Bonne évasion,",
+ sign_name:"Myrdhana",
+help:
+"Cliquer sur un thème pour afficher les images qu’il contient.<br>" +
+"Cliquer sur une image pour l’afficher en grand.<br>" +
+"Utilisez les flèches pour naviguer, revenir à la galerie ou télécharger l’image.",
+themes_title:"Mes thèmes",
+
+ t_sf:"Sci-Fi",
+ t_fantasy:"Fantasy",
+ t_apocalypse:"Apocalypse",
+ t_cats:"Des chats, des chats et encore des chats",
+ t_misc:"Autres images",
+ footer:"Site optimisé pour PC. Images sous CC BY 4.0. © 2025-2026 — Myrdhana"
+},
+en:{
+ title:"Imagination is the road to a greater world",
+ tagline:"Imagination has no borders",
+ p1:"Welcome to my site. Here you will find images I created (some with the help of ChatGPT) and wish to share with you. You can download them freely.",
+ p2:"My inspiration comes from music, books, my dreams and my love for cats.",
+ p_extra:"I hope you will enjoy these images as much as I enjoy creating them.",
+ p3:"When reality becomes too harsh, imagination lets you escape.",
+ sign_text:"Enjoy the journey,",
+ sign_name:"Myrdhana",
+help:
+"Click on a theme to display its images.<br>" +
+"Click on an image to view it in full size.<br>" +
+"Use the arrows to navigate, return to the gallery or download the image.",
+themes_title:"My themes",
+
+ t_sf:"Sci-Fi",
+ t_fantasy:"Fantasy",
+ t_apocalypse:"Apocalypse",
+ t_cats:"Cats, cats and more cats",
+ t_misc:"Miscellaneous",
+ footer:"Best viewed on a PC. Images released under CC BY 4.0. © 2025-2026 — Myrdhana"
+},
+de:{
+ title:"Fantasie ist der Weg in eine größere Welt",
+ tagline:"Fantasie kennt keine Grenzen",
+ p1:"Willkommen auf meiner Seite. Hier findest du Bilder die ich erstellt habe (einige mit Hilfe von ChatGPT) und die ich gerne mit dir teile.",
+ p2:"Meine Inspiration kommt von Musiktexten, Büchern, Träumen und meiner Liebe zu Katzen.",
+ p_extra:"Ich hoffe, dass du diese Bilder genauso magst, wie ich es mag sie zu erschaffen.",
+ p3:"Wenn die Realität zu schwer wird, hilft die Fantasie zu entkommen.",
+ sign_text:"Gute Reise,",
+ sign_name:"Myrdhana",
+help:
+"Klicken Sie auf ein Thema, um die enthaltenen Bilder anzuzeigen.<br>" +
+"Klicken Sie auf ein Bild, um es vergrößert darzustellen.<br>" +
+"Nutzen Sie die Pfeile zum Navigieren, zur Galerie zurückzukehren oder zum Downloaden.",
+themes_title:"Meine Themen",
+
+ t_sf:"Sci-Fi",
+ t_fantasy:"Fantasy",
+ t_apocalypse:"Apokalypse",
+ t_cats:"Katzen, Katzen und noch mehr Katzen",
+ t_misc:"Sonstiges",
+ footer:"Optimiert für PC. Alle Bilder stehen unter CC BY 4.0. © 2025-2026 — Myrdhana"
+},
+lu:{
+ title:"D’Fantasie ass de Wee an eng méi grouss Welt",
+ tagline:"Fantasie huet keng Grenzen",
+ p1:"Wëllkomm op menger Säit. Hei fannt dir Biller déi ech gemaach hunn (e puer mat Hëllef vu ChatGPT) an déi ech gär mat iech deelen.",
+ p2:"Inspiréiert vu Musekstexter, Bicher, Dreem a menger Léift fir Kazen.",
+ p_extra:"Ech hoffen, datt dir dës Biller genee esou gären hutt, wéi ech se gär maachen.",
+ p3:"Wann d’Realitéit ze schwéier gëtt, erlaabt d’Fantasie ze flüchten.",
+ sign_text:"Schéin Rees,",
+ sign_name:"Myrdhana",
+help:
+"Klickt op en Thema, fir d’Biller ze gesinn déi et enthält.<br>" +
+"Klickt op e Bild, fir et grouss ze affichéieren.<br>" +
+"D’Pfeile benotze fir ze navigéieren, zeréck an d’Galerie oder erofzelueden.",
+themes_title:"Meng Themen",
+
+ t_sf:"Sci-Fi",
+ t_fantasy:"Fantasy",
+ t_apocalypse:"Apokalyps",
+ t_cats:"Kazen, Kazen a nach méi Kazen",
+ t_misc:"Aner Biller",
+ footer:"Optiméiert fir PC. Biller ënner CC BY 4.0. © 2025-2026 — Myrdhana"
+}
+};
+
+function setLang(l){
+ const t=texts[l];
+ for(const k in t){
+   const el=document.getElementById(k);
+   if(el) el.innerHTML=t[k];
+ }
+}
+
+setLang("fr");
+</script>
+
+</body>
+</html>

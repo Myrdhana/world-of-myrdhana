@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Myrdhana – Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;
+  background:#0b0e18;
+  color:#e8e8ee;
+  font-family:system-ui,sans-serif;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.6rem 1rem;
+  background:rgba(10,12,20,0.6);
+  backdrop-filter:blur(8px);
+  z-index:10;
+}
+
+header a{
+  color:#6ecbff;
+  font-size:1.4rem;
+  text-decoration:none;
+}
+
+header a:hover{
+  color:#bfe9ff;
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  padding:4.5rem 1rem 1rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1rem;
+}
+
+.gallery img{
+  width:100%;
+  height:auto;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ===== VIEWER ===== */
+.viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:20;
+}
+
+.viewer img{
+  max-width:95vw;
+  max-height:95vh;
+  user-select:none;
+}
+
+/* navigation */
+.viewer .nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:2.2rem;
+  background:none;
+  border:none;
+  color:#6ecbff;
+  cursor:pointer;
+}
+
+.viewer .nav:hover{
+  color:#bfe9ff;
+}
+
+.viewer .prev{ left:1rem; }
+.viewer .next{ right:1rem; }
+
+/* retour galerie */
+.back-btn{
+  position:absolute;
+  top:1rem;
+  left:1rem;
+  padding:0.45rem 0.75rem;
+  font-size:0.75rem;
+  background:rgba(255,255,255,0.08);
+  color:#e8e8ee;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+
+.back-btn:hover{
+  background:rgba(255,255,255,0.16);
+}
+
+/* download */
+.viewer .download{
+  position:absolute;
+  bottom:1rem;
+  right:1rem;
+  font-size:1.2rem;
+  color:#6ecbff;
+  text-decoration:none;
+}
+
+.viewer .download:hover{
+  color:#bfe9ff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">←</a>
+</header>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="viewer" id="viewer">
+  <button class="back-btn" id="backBtn">← Galerie</button>
+  <img id="viewerImg">
+  <button class="nav prev">←</button>
+  <button class="nav next">→</button>
+  <a class="download" id="download" download>⬇</a>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const theme = params.get("theme");
+
+const gallery = document.getElementById("gallery");
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
+const download = document.getElementById("download");
+const backBtn = document.getElementById("backBtn");
+
+let images = [];
+let current = 0;
+
+/* chargement images */
+for(let i=1;i<=300;i++){
+  const num = String(i).padStart(3,"0");
+  ["jpg","png"].forEach(ext=>{
+    const src = `images/${theme}/${num}.${ext}`;
+    const img = new Image();
+    img.src = src;
+    img.onload = ()=>{
+      images.push(src);
+      img.onclick = ()=>openImage(images.indexOf(src));
+      gallery.appendChild(img);
+    };
+  });
+}
+
+/* viewer */
+function openImage(i){
+  current = i;
+  viewer.style.display = "flex";
+  viewerImg.src = images[current];
+  download.href = images[current];
+}
+
+function closeViewer(){
+  viewer.style.display = "none";
+}
+
+/* navigation */
+document.querySelector(".prev").onclick = ()=>{
+  if(current > 0) openImage(current - 1);
+};
+
+document.querySelector(".next").onclick = ()=>{
+  if(current < images.length - 1) openImage(current + 1);
+};
+
+backBtn.onclick = closeViewer;
+</script>
+
+</body>
+</html>
+
