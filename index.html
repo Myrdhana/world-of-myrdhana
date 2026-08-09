@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Myrdhana</title>
+<title>Worlds of Myrdhana</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
@@ -24,6 +24,14 @@ h1{
   background:linear-gradient(90deg,#7dff9a,#4fd1c5,#7dff9a);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+}
+
+.subtitle2{
+  margin-top:-0.5rem;
+  margin-bottom:1rem;
+  color:#6ecbff;
+  font-size:0.95rem;
+  letter-spacing:0.08em;
 }
 
 .tagline{
@@ -147,6 +155,7 @@ footer{
 </select>
 
 <h1 id="title"></h1>
+<p class="subtitle2" id="title2"></p>
 <p class="tagline" id="tagline"></p>
 
 <p id="p1"></p>
@@ -164,6 +173,7 @@ footer{
 <!-- LISTE DES THÈMES -->
 <div class="themes">
   <div class="theme"><a href="theme.html?theme=sf"><span id="t_sf"></span></a></div>
+  <div class="theme"><a href="theme.html?theme=dystopia"><span id="t_dystopia"></span></a></div>
   <div class="theme"><a href="theme.html?theme=fantasy"><span id="t_fantasy"></span></a></div>
   <div class="theme"><a href="theme.html?theme=apocalypse"><span id="t_apocalypse"></span></a></div>
   <div class="theme"><a href="theme.html?theme=cats"><span id="t_cats"></span></a></div>
@@ -172,7 +182,6 @@ footer{
 
 <!-- TEXTE D’AIDE / EXPLICATION -->
 <div class="help" id="help"></div>
-</div>
 
 <footer>
   <span id="footer"></span>
@@ -184,9 +193,10 @@ footer{
 const texts={
 fr:{
  title:"L’imagination est la route vers un monde plus grand",
+ title2:"Digital Art by Myrdhana, created with AI",
  tagline:"L’imagination n’a pas de frontière",
- p1:"Bienvenue sur mon site. Vous trouverez ici des images que j’ai créées (certaines avec l’aide de ChatGPT) et que je souhaite partager avec vous. Vous pouvez les télécharger librement.",
- p2:"Je m’inspire de textes de musiques, de livres, de mes rêves et de mon amour pour les chats.",
+ p1:"Bienvenue sur mon site. Vous trouverez ici des images que j’ai créées avec l’aide de ChatGPT et que je souhaite partager avec vous. Vous pouvez les télécharger librement.",
+ p2:"Je m’inspire de chansons, de livres, de mes rêves et de mon amour pour les chats.",
  p_extra:"J’espère que vous aimerez ces images autant que j’aime les créer.",
  p3:"Quand la réalité devient trop dure, l’imagination permet de s’évader.",
  sign_text:"Bonne évasion,",
@@ -198,6 +208,7 @@ help:
 themes_title:"Mes thèmes",
 
  t_sf:"Sci-Fi",
+ t_dystopia:"Dystopie",
  t_fantasy:"Fantasy",
  t_apocalypse:"Apocalypse",
  t_cats:"Des chats, des chats et encore des chats",
@@ -206,8 +217,9 @@ themes_title:"Mes thèmes",
 },
 en:{
  title:"Imagination is the road to a greater world",
+ title2:"Digital Art by Myrdhana, created with AI",
  tagline:"Imagination has no borders",
- p1:"Welcome to my site. Here you will find images I created (some with the help of ChatGPT) and wish to share with you. You can download them freely.",
+ p1:"Welcome to my site. Here you will find images that I created with the help of ChatGPT that I'd like to share with you. You are free to download them.",
  p2:"My inspiration comes from music, books, my dreams and my love for cats.",
  p_extra:"I hope you will enjoy these images as much as I enjoy creating them.",
  p3:"When reality becomes too harsh, imagination lets you escape.",
@@ -220,6 +232,7 @@ help:
 themes_title:"My themes",
 
  t_sf:"Sci-Fi",
+ t_dystopia:"Dystopia",
  t_fantasy:"Fantasy",
  t_apocalypse:"Apocalypse",
  t_cats:"Cats, cats and more cats",
@@ -228,10 +241,11 @@ themes_title:"My themes",
 },
 de:{
  title:"Fantasie ist der Weg in eine größere Welt",
+ title2:"Digital Art by Myrdhana, created with AI",
  tagline:"Fantasie kennt keine Grenzen",
- p1:"Willkommen auf meiner Seite. Hier findest du Bilder die ich erstellt habe (einige mit Hilfe von ChatGPT) und die ich gerne mit dir teile.",
+ p1:"Willkommen auf meiner Seite. Hier findet ihr Bilder, die ich mit Hilfe von ChatGPT erstellt habe und die ich mit euch teilen möchte. Ihr könnt sie kostenlos herunterladen.",
  p2:"Meine Inspiration kommt von Musiktexten, Büchern, Träumen und meiner Liebe zu Katzen.",
- p_extra:"Ich hoffe, dass du diese Bilder genauso magst, wie ich es mag sie zu erschaffen.",
+ p_extra:"Ich hoffe, dass ihr diese Bilder genauso mögt, wie ich es mag sie zu erschaffen.",
  p3:"Wenn die Realität zu schwer wird, hilft die Fantasie zu entkommen.",
  sign_text:"Gute Reise,",
  sign_name:"Myrdhana",
@@ -242,6 +256,7 @@ help:
 themes_title:"Meine Themen",
 
  t_sf:"Sci-Fi",
+ t_dystopia:"Dystopie",
  t_fantasy:"Fantasy",
  t_apocalypse:"Apokalypse",
  t_cats:"Katzen, Katzen und noch mehr Katzen",
@@ -250,8 +265,9 @@ themes_title:"Meine Themen",
 },
 lu:{
  title:"D’Fantasie ass de Wee an eng méi grouss Welt",
+ title2:"Digital Art by Myrdhana, created with AI",
  tagline:"Fantasie huet keng Grenzen",
- p1:"Wëllkomm op menger Säit. Hei fannt dir Biller déi ech gemaach hunn (e puer mat Hëllef vu ChatGPT) an déi ech gär mat iech deelen.",
+ p1:"Wëllkomm op menger Säit. Hei fannt dir Biller, déi ech mat Hëllef vu ChatGPT erstallt hunn an déi ech gär mat iech deele wëll. Dir kënnt se gratis eroflueden.",
  p2:"Inspiréiert vu Musekstexter, Bicher, Dreem a menger Léift fir Kazen.",
  p_extra:"Ech hoffen, datt dir dës Biller genee esou gären hutt, wéi ech se gär maachen.",
  p3:"Wann d’Realitéit ze schwéier gëtt, erlaabt d’Fantasie ze flüchten.",
@@ -264,6 +280,7 @@ help:
 themes_title:"Meng Themen",
 
  t_sf:"Sci-Fi",
+ t_dystopia:"Dystopie",
  t_fantasy:"Fantasy",
  t_apocalypse:"Apokalyps",
  t_cats:"Kazen, Kazen a nach méi Kazen",
