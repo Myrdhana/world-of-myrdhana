@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-
+<link
+  rel="stylesheet"
+  href="https://api.reactioncount.com/api/counts.css?url=https%3A%2F%2Fmyrdhana.github.io%2Fworld-of-myrdhana%2Findex.html%23rcdc-864914"
+/>
 <style>
 body{
   margin:0;
@@ -147,6 +150,29 @@ footer{
   color:#4C4C73;
   font-style:italic;
 }
+.reaction-counter{
+  margin-top:1.5rem;
+}
+.reaction-counter button{
+  background:rgba(255,255,255,0.08);
+  color:#6ecbff;
+  border:1px solid rgba(110,203,255,0.25);
+  border-radius:6px;
+  padding:0.45rem 0.8rem;
+  font-family:system-ui,sans-serif;
+  font-size:0.85rem;
+  cursor:pointer;
+}
+
+.reaction-counter button:hover{
+  background:rgba(110,203,255,0.12);
+  border-color:rgba(110,203,255,0.5);
+}
+
+.reaction-counter .rcdc-count{
+  margin-left:0.35rem;
+  color:#b9b9d8;
+}
 </style>
 </head>
 
@@ -175,19 +201,80 @@ footer{
 </p>
 
 <div class="themes-title" id="themes_title"></div>
+
 <div class="last-update">
   Update 09/08/2026
 </div>
 
+
 <!-- LISTE DES THÈMES -->
 <div class="themes">
-  <div class="theme"><a href="theme.html?theme=sf"><span id="t_sf"></span></a></div>
-  <div class="theme"><a href="theme.html?theme=dystopia"><span id="t_dystopia"></span></a></div>
-  <div class="theme"><a href="theme.html?theme=fantasy"><span id="t_fantasy"></span></a></div>
-  <div class="theme"><a href="theme.html?theme=apocalypse"><span id="t_apocalypse"></span></a></div>
-  <div class="theme"><a href="theme.html?theme=cats"><span id="t_cats"></span></a></div>
-  <div class="theme"><a href="theme.html?theme=misc"><span id="t_misc"></span></a></div>
+
+  <div class="theme">
+    <a href="theme.html?theme=sf">
+      <span id="t_sf"></span>
+    </a>
+  </div>
+
+  <div class="theme">
+    <a href="theme.html?theme=dystopia">
+      <span id="t_dystopia"></span>
+    </a>
+  </div>
+
+  <div class="theme">
+    <a href="theme.html?theme=fantasy">
+      <span id="t_fantasy"></span>
+    </a>
+  </div>
+
+  <div class="theme">
+    <a href="theme.html?theme=apocalypse">
+      <span id="t_apocalypse"></span>
+    </a>
+  </div>
+
+  <div class="theme">
+    <a href="theme.html?theme=cats">
+      <span id="t_cats"></span>
+    </a>
+  </div>
+
+  <div class="theme">
+    <a href="theme.html?theme=misc">
+      <span id="t_misc"></span>
+    </a>
+  </div>
+
 </div>
+
+
+<!-- LIKE BUTTON -->
+
+<div class="reaction-counter">
+
+  <form
+    id="rcdc-864914"
+    action="https://api.reactioncount.com/api/reaction?url=https%3A%2F%2Fmyrdhana.github.io%2Fworld-of-myrdhana%2Findex.html%23rcdc-864914"
+    method="post"
+  >
+
+    <button
+      name="reaction"
+      value="rcdc-864914-a"
+      aria-label="👍 Like"
+    >
+      <span>👍 Like</span>
+      <span
+        class="rcdc-count"
+        id="rcdc-864914-a-count"
+      ></span>
+    </button>
+
+  </form>
+
+</div>
+
 
 <!-- TEXTE D’AIDE / EXPLICATION -->
 <div class="help" id="help"></div>
