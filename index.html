@@ -140,14 +140,20 @@ footer{
   font-weight:600;
   color:#3E93C2;
 }
-
+.last-update{
+  margin-top:0.2rem;
+  margin-bottom:1rem;
+  font-size:0.65rem;
+  color:#4C4C73;
+  font-style:italic;
+}
 </style>
 </head>
 
 <body>
 <main>
 
-<select onchange="setLang(this.value)">
+<select onchange="setLang(this.value); localStorage.setItem('language', this.value)">
   <option value="fr">Français</option>
   <option value="en">English</option>
   <option value="de">Deutsch</option>
@@ -169,6 +175,9 @@ footer{
 </p>
 
 <div class="themes-title" id="themes_title"></div>
+<div class="last-update">
+  Update 09/08/2026
+</div>
 
 <!-- LISTE DES THÈMES -->
 <div class="themes">
@@ -183,8 +192,15 @@ footer{
 <!-- TEXTE D’AIDE / EXPLICATION -->
 <div class="help" id="help"></div>
 
+
 <footer>
+
   <span id="footer"></span>
+
+  <br>
+
+  <a href="legal.html">Licence & Informations légales</a>
+
 </footer>
 
 </main>
@@ -297,7 +313,9 @@ function setLang(l){
  }
 }
 
-setLang("fr");
+const savedLang = localStorage.getItem("language") || "fr";
+document.querySelector("select").value = savedLang;
+setLang(savedLang);
 </script>
 
 </body>
